@@ -16,10 +16,11 @@ try {
   if(filter_var($_GET['page'], FILTER_VALIDATE_INT)) {
     $page = filter_var($_GET['page'], FILTER_VALIDATE_INT);
   }
-  $page_from = $page * 15000;
-  $page_to = ($page+1) * 15000;
+  $page_count = 10000;
+  $page_from = $page * $page_count;
+  $page_to = ($page+1) * $page_count;
 
-  $result = $database->query("SELECT p.name as 'Project', c.name as 'Client', t.name as 'Task' FROM tasks t LEFT JOIN projects p ON t.project_id = p.id LEFT JOIN clients c ON p.client_id = c.id LIMIT $page_from,$page_to");
+  $result = $database->query("SELECT p.name as 'Project', c.name as 'Client', t.name as 'Task' FROM clients c LEFT JOIN projects p ON p.client_id = c.id LEFT JOIN tasks t ON t.project_id = p.id LIMIT $page_from,$page_to");
   $items = $result->fetchAll();
 
   $writer = Writer::createFromFileObject(new SplTempFileObject());
