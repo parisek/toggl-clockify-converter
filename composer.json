@@ -1,0 +1,15 @@
+{
+    "name": "parisek/toggl-clockify-converter",
+    "description": "Convert Toggl export (json) to Clockify import (csv)",
+    "keywords": ["clockify", "toggl", "converter"],
+    "homepage": "https://github.com/parisek/toggl-clockify-converter",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "dibi/dibi": "^4.2",
+        "halaxa/json-machine": "^0.6.0",
+        "league/csv": "^9.6"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    }
+}
